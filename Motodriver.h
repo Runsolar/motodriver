@@ -19,7 +19,7 @@ using namespace std;
 */
 enum class ShieldDriversNames{L298N, OTHER}
 
-class MotorConfiguration{
+class Motor{
     private:
         int8_t pwm_pin;
         int8_t direction_pin1;
@@ -36,7 +36,7 @@ class MotorConfiguration{
         /**
         * @brief MotorConfiguration object constructor by default.
         */
-        MotorConfiguration() = default; 
+        Motor() = default; 
 
         /**
         * @brief MotorConfiguration object constructor.
@@ -47,7 +47,7 @@ class MotorConfiguration{
         * @param direct Direction value.
         * @param shield_driver_name Name of your motor driver shield (check for support).
         */
-        MotorConfiguration(const int8_t &_pwm_pin, const int8_t &_direction_pin1, const int8_t &_direction_pin2,
+        Motor(const int8_t &_pwm_pin, const int8_t &_direction_pin1, const int8_t &_direction_pin2,
                            const int8_t &_dcycle, const int8_t &_direct, 
                            const string &_shield_driver_name): pwm_pin(_pwm_pin), direction_pin1(_direction_pin1), 
                            direction_pin2(_direction_pin2), dcycle(_dcycle), direct(_direct){
@@ -67,7 +67,7 @@ class MotorConfiguration{
             pinMode(direction_pin2, OUTPUT);
         }
 
-        ~MotorConfiguration(){}
+        ~Motor(){}
 
         #pragma endregion
         #pragma region Accessors
@@ -107,7 +107,7 @@ class MotorConfiguration{
         }
 
         /**
-        * @brief
+        * @brief Sends signal to chosen direction and pwm pins.
         */
         void Rotate(){
             digitalWrite(direction_pin1, direct);
@@ -118,27 +118,27 @@ class MotorConfiguration{
 
 };
 
-class ShieldDriver {
+class Motodriver {
     private:
-        map<int8_t, MotorConfiguration> motorConfiguartion;
+        map<int8_t, Motor> motor;
 
     public:
         #pragma region Initialization
 
         /**
-        * @brief ShieldDriver object constructor by default.
+        * @brief Motodriver object constructor by default.
         */
-        ShieldDriverConfiguration() = default; 
+        Motodriver() = default; 
 
         /**
-        * @brief MotorConfiguration object constructor.
-        * @param motorConfiguration MotorConfiguration instance.
+        * @brief Motor object constructor.
+        * @param motor Motor instance.
         */
-        ShieldDriverConfiguration(map<int8_t, MotorConfiguration> &_motorConfiguration) {
-            motorConfiguartion = _motorConfiguration;
+        Motodriver(map<int8_t, Motor> &_motor) {
+            motor = _motor;
         }
 
-        ~ShieldDriverConfiguration(){}
+        ~Motodriver(){}
 
         #pragma endregion
         #pragma region Functions
