@@ -4,15 +4,13 @@
 //
 // Feel free to use, copy, modify, merge, and publish this software
 
-#include "Motodriver.h"
+#include <Arduino.h>
+#include "motodriver.h"
 
-void setup()
-{
-	Serial.begin(9600);
+void setup() {
+  
 }
 
-void loop()
-{
-	ShieldDriver.clockWise(255, 1);
-    ShieldDriver.clockWise(255, 2);
+void loop() {
+  
 }
