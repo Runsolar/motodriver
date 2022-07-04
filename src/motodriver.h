@@ -15,7 +15,20 @@
 * L298N 2X Motor Shield, 
 * Other.
 */
-enum class ShieldDriversNames{L298N, OTHER};
+typedef enum {
+    L298N = 1, 
+    OTHER = 0
+} ShieldDriversNames;
+
+/**
+ * @brief Supporting directions: 
+ * Forward, Backward, Shutdown
+ */
+typedef enum {
+    FORWARD = 0, 
+    BACKWARD = 1,
+    SHUTDOWN = -1
+} MoveDirection;
 
 class Motor{
     private:
@@ -24,6 +37,7 @@ class Motor{
         int8_t direction_pin2;
         int8_t dcycle;
         int8_t direct;
+        boolean isMoving;
     
     public:
         int8_t motorID;
@@ -100,7 +114,22 @@ class Motor{
         void print8_t_driver_name();
 
         /**
-        * @brief Sends signal to chosen direction and pwm pins.
+        * @brief Move forward with set duty cycle if pwm pin exists, if not - move forward with 255.
+        */
+        void Forward();
+
+        /**
+        * @brief Move backward with set duty cycle if pwm pin exists, if not - move backward with 255.
+        */
+        void Backward();
+
+        /**
+        * @brief Stop moving.
+        */
+        void Shutdown();
+
+        /**
+        * @brief Move with set direction and duty cycle.
         */
         void Rotate();
 
@@ -108,7 +137,7 @@ class Motor{
 
 };
 
-class MotoDriver {
+class MotoDriver{
     private:
         std::map<int8_t, Motor> motors;
 
