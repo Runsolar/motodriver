@@ -21,7 +21,6 @@ Motor::Motor(const int8_t &_pwm_pin, const int8_t &_direction_pin1, const int8_t
         direction_pin2 = _direction_pin2;
         dcycle = _dcycle;
         direct = MoveDirection::SHUTDOWN;
-        isMoving = false;
 
         pinMode(pwm_pin, OUTPUT);
         pinMode(direction_pin1, OUTPUT);
@@ -35,7 +34,6 @@ Motor::Motor(const int8_t &_pwm_pin, const int8_t &_direction_pin1, const int8_t
         direction_pin2 = _direction_pin2;
         dcycle = 255;
         direct = MoveDirection::SHUTDOWN;
-        isMoving = false;
 
         pinMode(direction_pin1, OUTPUT);
         pinMode(direction_pin2, OUTPUT);
@@ -66,36 +64,77 @@ void Motor::print8_t_driver_name(){
 
 void Motor::Rotate(){
     digitalWrite(direction_pin1, direct);
-    analogWrite(pwm_pin, dcycle);
-
-    isMoving = true;
-}
-
-void Motor::Forward(){
-    digitalWrite(direction_pin1, HIGH);
-    digitalWrite(direction_pin2, LOW);
-    analogWrite(pwm_pin, dcycle);
-
-    direct = MoveDirection::FORWARD;
-    isMoving = true;
-}
-
-void Motor::Backward(){
-    digitalWrite(direction_pin1, LOW);
-    digitalWrite(direction_pin2, HIGH);
-    analogWrite(pwm_pin, dcycle);
-
-    direct = MoveDirection::BACKWARD;
-    isMoving = true;
+    analogWrite(pwm_pin, dcycle);  
 }
 
 void Motor::Shutdown(){
     digitalWrite(direction_pin1, LOW);
     digitalWrite(direction_pin2, LOW);
     analogWrite(pwm_pin, dcycle);
+}
 
-    direct = MoveDirection::SHUTDOWN;
-    isMoving = false;
+#pragma endregion
+#pragma region MotorX2
+
+MotorX2::MotorX2() = default;
+
+MotorX2::MotorX2(const int8_t &_pwm_pin_A, const int8_t &_pwm_pin_B,
+                 const int8_t &_direction_pin1_A, const int8_t &_direction_pin2_A,
+                 const int8_t &_direction_pin1_B, const int8_t &_direction_pin2_B,
+                 const int8_t &_dcycle_A, const int8_t &_dcycle_B,
+                 const int8_t &_direct,
+                 const std::string &_shield_driver_name_A, const std::string &_shield_driver_name_B):
+                 motorA(_pwm_pin_A, _direction_pin1_A, _direction_pin2_A, _dcycle_A,
+                 _direct, _shield_driver_name_A), 
+                 motorB(_pwm_pin_B, _direction_pin1_B, _direction_pin2_B, _dcycle_B,
+                 _direct, _shield_driver_name_B){}
+
+MotorX2::~MotorX2(){}
+
+void MotorX2::set_direct(int8_t _direct){
+    direct = _direct;
+}
+
+void MotorX2::set_dcycle_A(int8_t _dcycle_A){
+    dcycleA = _dcycle_A;
+}
+
+void MotorX2::set_dcycle_B(int8_t _dcycle_B){
+    dcycleB = _dcycle_B;
+}
+
+int8_t MotorX2::get_direct(){
+    return direct;
+}
+
+int8_t MotorX2::get_dcycle_A(){
+    return dcycleA;
+}
+
+int8_t MotorX2::get_dcycle_B(){
+    return dcycleB;
+}
+
+void MotorX2::print8_t_driver_names(){
+    std::string outputData = "First motor driver name is " + shield_driver_name_A + "\n" + 
+                             "Second motor driver name is " + shield_driver_name_B + "\n";
+    std::cout << outputData; 
+}
+
+void MotorX2::RotateA(){
+    motorA.Rotate();
+}
+
+void MotorX2::RotateB(){
+    motorB.Rotate();
+}
+
+void MotorX2::ShutdownA(){
+    motorA.Shutdown();
+}
+
+void MotorX2::ShutdownB(){
+    motorB.Shutdown();
 }
 
 #pragma endregion
@@ -109,16 +148,112 @@ MotoDriver::MotoDriver(std::map<int8_t, Motor> &_motors) {
 
 MotoDriver::~MotoDriver(){}
 
-void MotoDriver::clockWise(const int8_t &_dcycle, const int8_t &motorId){     
-    motors[motorId].direction_() = 1;
+void MotoDriver::Backward(const int8_t &_dcycle, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::BACKWARD;
     motors[motorId].duty_cycle_() = _dcycle;
-    motors[motorId].Rotate();   
+    motors[motorId].Rotate();  
+
+    isMoving = true; 
 }
 
-void MotoDriver::counterclockWise(const int8_t &_dcycle, const int8_t &motorId){     
-    motors[motorId].direction_() = 0;
+void MotoDriver::Forward(const int8_t &_dcycle, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::FORWARD;
     motors[motorId].duty_cycle_() = _dcycle;
-    motors[motorId].Rotate();   
+    motors[motorId].Rotate();  
+
+    isMoving = true; 
+}
+
+void MotoDriver::Shutdown(const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::SHUTDOWN;
+    motors[motorId].Shutdown();  
+    
+    isMoving = false; 
+}
+
+#pragma endregion
+#pragma region MotoDriverX2
+
+MotoDriverX2::MotoDriverX2() = default; 
+
+MotoDriverX2::MotoDriverX2(std::map<int8_t, MotorX2> &_motors) {
+    motors = _motors;
+}
+
+MotoDriverX2::~MotoDriverX2(){}
+
+void MotoDriverX2::BackwardA(const int8_t &_dcycleA, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::BACKWARD;
+    motors[motorId].duty_cycle_A_() = _dcycleA;
+    motors[motorId].RotateA();  
+
+    isMoving = true; 
+}
+
+void MotoDriverX2::BackwardB(const int8_t &_dcycleB, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::BACKWARD;
+    motors[motorId].duty_cycle_B_() = _dcycleB;
+    motors[motorId].RotateB();  
+
+    isMoving = true; 
+}
+
+void MotoDriverX2::BackwardBoth(const int8_t &_dcycleA, const int8_t &_dcycleB, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::BACKWARD;
+    motors[motorId].duty_cycle_A_() = _dcycleA;
+    motors[motorId].RotateA(); 
+    motors[motorId].duty_cycle_B_() = _dcycleB;
+    motors[motorId].RotateB();  
+
+    isMoving = true; 
+}
+
+void MotoDriverX2::ForwardA(const int8_t &_dcycleA, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::FORWARD;
+    motors[motorId].duty_cycle_A_() = _dcycleA;
+    motors[motorId].RotateA();  
+
+    isMoving = true; 
+}
+
+void MotoDriverX2::ForwardB(const int8_t &_dcycleB, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::FORWARD;
+    motors[motorId].duty_cycle_B_() = _dcycleB;
+    motors[motorId].RotateB();  
+
+    isMoving = true; 
+}
+
+void MotoDriverX2::ForwardBoth(const int8_t &_dcycleA, const int8_t &_dcycleB, const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::FORWARD;
+    motors[motorId].duty_cycle_A_() = _dcycleA;
+    motors[motorId].RotateA(); 
+    motors[motorId].duty_cycle_B_() = _dcycleB;
+    motors[motorId].RotateB();  
+
+    isMoving = true; 
+}
+
+void MotoDriverX2::ShutdownA(const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::SHUTDOWN;
+    motors[motorId].ShutdownA();  
+
+    isMoving = false; 
+}
+
+void MotoDriverX2::ShutdownB(const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::SHUTDOWN;
+    motors[motorId].ShutdownB();  
+
+    isMoving = false; 
+}
+
+void MotoDriverX2::ShutdownBoth(const int8_t &motorId){     
+    motors[motorId].direction_() = MoveDirection::SHUTDOWN;
+    motors[motorId].ShutdownA(); 
+    motors[motorId].ShutdownB();  
+
+    isMoving = false; 
 }
 
 #pragma endregion
