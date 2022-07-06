@@ -91,22 +91,16 @@ void MotoDriver::Backward(const int8_t &_dcycle, const int8_t &motorId){
     motors[motorId].direction_() = MoveDirection::BACKWARD;
     motors[motorId].duty_cycle_() = _dcycle;
     motors[motorId].Rotate();  
-
     isMoving = true;
 }
-
 void MotoDriver::Forward(const int8_t &_dcycle, const int8_t &motorId){     
     motors[motorId].direction_() = MoveDirection::FORWARD;
     motors[motorId].duty_cycle_() = _dcycle;
     motors[motorId].Rotate();  
-
     isMoving = true; 
 }
-
 void MotoDriver::Shutdown(const int8_t &motorId){     
-    motors[motorId].direction_() = MoveDirection::SHUTDOWN;
     motors[motorId].Shutdown();  
-    
     isMoving = false; 
 }
 

@@ -32,10 +32,10 @@ class Motor{
 
         /**
         * @brief Motor object constructor.
+        * @param shield_driver_name Name of your motor driver shield.
         * @param pwm_pin PWM (Pulse-width modulation) controller pin number.
         * @param direction_pin1 First rotating direction pin number.
         * @param direction_pin2 Second rotating direction pin number(if exists).
-        * @param shield_driver_name Name of your motor driver shield (check for support).
         */
         Motor(const std::string &_shield_driver_name, const int8_t &_pwm_pin, 
               const int8_t &_direction_pin1, const int8_t &_direction_pin2);
@@ -118,7 +118,7 @@ class MotoDriver{
 
         /**
         * @brief MotoDriver object constructor.
-        * @param motor Motor instance.
+        * @param motors Motor instance list.
         */
         MotoDriver(std::map<int8_t, Motor> &_motors);
 
