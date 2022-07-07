@@ -31,13 +31,22 @@ class Motor{
         Motor(); 
 
         /**
-        * @brief Motor object constructor.
+        * @brief [Single Pin] Motor object constructor.
         * @param shield_driver_name Name of your motor driver shield.
         * @param pwm_pin PWM (Pulse-width modulation) controller pin number.
         * @param direction_pin1 First rotating direction pin number.
-        * @param direction_pin2 Second rotating direction pin number(if exists).
         */
-        Motor(const std::string &_shield_driver_name, const int8_t &_pwm_pin, 
+        Motor(const ShieldDriversNames &_shield_driver_type, const int8_t &_pwm_pin, 
+             const int8_t &_direction_pin1);
+
+        /**
+        * @brief [Double Pin] Motor object constructor.
+        * @param shield_driver_name Name of your motor driver shield.
+        * @param pwm_pin PWM (Pulse-width modulation) controller pin number.
+        * @param direction_pin1 First rotating direction pin number.
+        * @param direction_pin2 Second rotating direction pin number.
+        */
+        Motor(const ShieldDriversNames &_shield_driver_type, const int8_t &_pwm_pin, 
               const int8_t &_direction_pin1, const int8_t &_direction_pin2);
 
         /**
