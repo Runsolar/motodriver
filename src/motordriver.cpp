@@ -10,31 +10,38 @@
 
 Motor::Motor() = default;
 
-Motor::Motor(const std::string &_shield_driver_name, const int8_t &_pwm_pin, 
-             const int8_t &_direction_pin1, const int8_t &_direction_pin2){
-       
-    if(_shield_driver_name == "L298N"){
-
-        shield_driver_type = (int8_t)ShieldDriversNames::L298N;
+Motor::Motor(const ShieldDriversNames &_shield_driver_type, const int8_t &_pwm_pin, 
+             const int8_t &_direction_pin1):direction_pin1(_direction_pin1),
+             dcycle(100), direct(MoveDirection::SHUTDOWN){
+                
+    if(_shield_driver_type == (int8_t)ShieldDriversNames::L298N){
+        shield_driver_name = "L298N 2X Motor Shield";
         pwm_pin = _pwm_pin;
-        direction_pin1 = _direction_pin1;
-        direction_pin2 = _direction_pin2;
-        dcycle = 100;
-        direct = MoveDirection::SHUTDOWN;
+        pinMode(pwm_pin, OUTPUT);
+        pinMode(direction_pin1, OUTPUT);
+    }
+    
+    if(_shield_driver_type == (int8_t)ShieldDriversNames::OTHER){
+        shield_driver_name = "Undefined";
+        pinMode(direction_pin1, OUTPUT);
+    }
+}
 
+Motor::Motor(const ShieldDriversNames &_shield_driver_type, const int8_t &_pwm_pin, 
+             const int8_t &_direction_pin1, const int8_t &_direction_pin2):
+             direction_pin1(_direction_pin1), direction_pin2(_direction_pin2),
+             dcycle(100), direct(MoveDirection::SHUTDOWN){
+       
+    if(_shield_driver_type == (int8_t)ShieldDriversNames::L298N){
+        shield_driver_name = "L298N 2X Motor Shield";
+        pwm_pin = _pwm_pin;
         pinMode(pwm_pin, OUTPUT);
         pinMode(direction_pin1, OUTPUT);
         pinMode(direction_pin2, OUTPUT);
     }
     
-    if(_shield_driver_name == "OTHER"){
-
-        shield_driver_type = (int8_t)ShieldDriversNames::OTHER;
-        direction_pin1 = _direction_pin1;
-        direction_pin2 = _direction_pin2;
-        dcycle = 100;
-        direct = MoveDirection::SHUTDOWN;
-
+    if(_shield_driver_type == (int8_t)ShieldDriversNames::OTHER){
+        shield_driver_name = "Undefined";
         pinMode(direction_pin1, OUTPUT);
         pinMode(direction_pin2, OUTPUT);
     }
