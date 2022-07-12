@@ -1,0 +1,47 @@
+name: Bug Report
+description: Create a bug report for Motodriver library.
+title: "[Bug Report]"
+labels: [bug]
+assignees:
+  - Arxaid
+body:
+  - type: checkboxes
+    id: check
+    attributes:
+      label: "Did you search other suggestions?"
+      options:
+      - label: "I have checked if this bug report exists already"
+        required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: "Describe the bug"
+      description: "Please write a clear and concise description of what the bug is."
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: "Reproduction steps"
+      description: "How do you trigger this bug? Please walk us through it step by step."
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "Expected behavior"
+      description: "Please write a clear and concise description of what you expected to happen when doing or performing this action."
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots"
+      description: "If applicable, add screenshots to help explain and / or show your problem."
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: "Additional context"
+      description: "Add any other context about the problem here, or leave blank."
