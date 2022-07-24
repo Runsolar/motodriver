@@ -15,12 +15,14 @@ class Motor{
     private:
         int8_t pwm_pin;
         int8_t direction_pin1;
-        int8_t direction_pin2;
+        int8_t direction_pin2 = 0;
         int8_t dcycle;
         int8_t direct;
-        boolean direction_pin_flag;
+        
+        //boolean direction_pin_flag;
     public:
         int8_t motorID;
+        int8_t groupId = 0;
         int8_t shield_driver_type;
         std::string shield_driver_name;
         
@@ -92,17 +94,21 @@ class Motor{
         void print8_t_driver_name();
 
         /**
+        * @result Set direction for the rotor
+        */  
+        void SetRotorDirection();
+
+        /**
         * @brief Stop moving.
         */
-        void Shutdown();
+        void Halt();
 
         /**
         * @brief Move with set direction and duty cycle.
         */
-        void Rotate();
+        void Rotate();  
 
         #pragma endregion
-
 };
 
 class MotoDriver{
@@ -132,140 +138,30 @@ class MotoDriver{
         #pragma region Functions
 
         /**
-        * @brief Move backward.
+        * @brief Moving to forward/backward.
         * @note Set duty cycle if pwm pin exists, if not - will move with 255.
         * @param dcycle Duty cycle value.
         * @param motorID Current motor you want to rotate.
         */
-        void Backward(const int8_t &_dcycle, const int8_t &motorId);
 
-        /**
-        * @brief Move backward with set delay.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        * @param motorID Current motor you want to rotate.
-        * @param delay Moving time (milliseconds).
-        */
-        void BackwardUntil(const int8_t &_dcycle, const int8_t &motorId, const int16_t &_delay);
-
-        /**
-        * @brief Move forward.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        * @param motorID Current motor you want to rotate.
-        */
-        void Forward(const int8_t &_dcycle, const int8_t &motorId);
-
-        /**
-        * @brief Move forward with set delay.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        * @param motorID Current motor you want to rotate.
-        * @param delay Moving time (milliseconds).
-        */
-        void ForwardUntil(const int8_t &_dcycle, const int8_t &motorId, const int16_t &_delay);
+        void Clockwise_Rotation(const int8_t &_dcycle, const int8_t &motorId);
+        void Counterclockwise_Rotation(const int8_t &_dcycle, const int8_t &motorId);
 
         /**
         * @brief Stop moving.
         * @param motorID Current motor you want to stop.
         */
-        void Shutdown(const int8_t &motorId);
+        void Halt(const int8_t &motorId);
 
-        #pragma endregion
-};
+        //The group methods
+        //void addGroup(int8_t groupId);
+        //Move a morotor to the group (a default group - 0)
+        void MotorToGroup(const int8_t &motorId, const int8_t &groupId);
+        void SetGroupDirection(const int8_t &groupId, const int8_t &direction);
 
-class MovingGroup{
-    private:
-        std::vector<Motor> movingGroup;
-        int8_t groupCounter;
-        int8_t softVelocity;
-        boolean isMoving;
-    public:
-        #pragma region Initialization
+        void Clockwise_Group_Rotation(const int8_t &_dcycle, const int8_t &groupId);
+        void Counterclockwise_Group_Rotation(const int8_t &_dcycle, const int8_t &groupId);
 
-        /**
-        * @brief MovingGroup object constructor by default.
-        */
-        MovingGroup();
 
-        /**
-        * @brief MovingGroup object constructor.
-        * @param movingGroup List of grouped motors.
-        */
-        MovingGroup(std::vector<Motor> &_movingGroup);
-
-        /**
-        * @brief MovingGroup object destructor by default.
-        */
-        ~MovingGroup();
-
-        #pragma endregion
-        #pragma region Functions
-
-        /**
-        * @brief Move backward.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        */
-        void GroupBackward(const int8_t &_dcycle);
-
-        /**
-        * @brief Move backward with set delay.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        * @param delay Moving time (milliseconds).
-        */
-        void GroupBackwardUntil(const int8_t &_dcycle, const int16_t &_delay);
-
-        /**
-        * @brief Move forward.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        */
-        void GroupForward(const int8_t &_dcycle);
-
-        /**
-        * @brief Move forward with set delay.
-        * @note Set duty cycle if pwm pin exists, if not - will move with 255.
-        * @param dcycle Duty cycle value.
-        * @param delay Moving time (milliseconds).
-        */
-        void GroupForwardUntil(const int8_t &_dcycle, const int16_t &_delay);
-
-        /**
-        * @brief Stop moving.
-        */
-        void GroupShutdown();
-
-        /**
-         * @brief Hard turn left with maximum possible angular velocity.
-         * @param dcycle Duty cycle value, if not stated - will be 50.
-         * @param delay Turning time (in milliseconds).
-         */
-        void HardTurnLeft(const int8_t &_dcycle, const int16_t &_delay);
-
-        /**
-         * @brief Hard turn right with maximum possible angular velocity.
-         * @param dcycle Moving group duty cycle value, if not stated - will be 50.
-         * @param delay Turning time (in milliseconds).
-         */
-        void HardTurnRight(const int8_t &_dcycle, const int16_t &_delay);
-
-        /**
-         * @brief Soft turn left with set increased angular velocity.
-         * @param dcycle Moving group duty cycle value, if not stated - will be 50.
-         * @param turn_dcycle Turning duty cycle increase.
-         * @param delay Turning time (in milliseconds).
-         */
-        void SoftTurnLeft(const int8_t &_dcycle, const int8_t &_turn_dcycle, const int16_t &_delay);
-
-        /**
-         * @brief Soft turn right with set increased angular velocity.
-         * @param dcycle Moving group duty cycle value, if not stated - will be 50.
-         * @param turn_dcycle Turning duty cycle increase.
-         * @param delay Turning time (in milliseconds).
-         */
-        void SoftTurnRight(const int8_t &_dcycle, const int8_t &_turn_dcycle, const int16_t &_delay);
-        
         #pragma endregion
 };

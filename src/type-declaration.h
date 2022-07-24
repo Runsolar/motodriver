@@ -12,7 +12,9 @@
 * Other.
 */
 typedef enum {
-    L298N = 1, 
+    
+    L298N = 2, 
+    TB6612 = 1,
     OTHER = 0
 } ShieldDriversNames;
 
@@ -21,7 +23,7 @@ typedef enum {
  * Forward, Backward, Shutdown
  */
 typedef enum {
-    FORWARD = 0, 
-    BACKWARD = 1,
-    SHUTDOWN = -1
-} MoveDirection;
+    CLOCKWISE = 1, 
+    COUNTERCLOCKWISE = 0,
+    HALT = -1
+} RotorDirection;
