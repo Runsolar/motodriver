@@ -32,7 +32,7 @@ You can import Motodriver library going to _PlatformIO: Home -> Libraries_ and s
 
 ## Import
 
-Include the library in your sketch code:
+Include the Motodriver library in your sketch code.
 ```
 #include <motodriver.h>
 ```
