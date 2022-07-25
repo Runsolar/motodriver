@@ -63,7 +63,7 @@ For ex.
 motorList = { {1, motor}, };
 or it might be
 motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
-MotoDriver motodriver = MotoDriver(motorList);
+motodriver = MotoDriver(motorList);
 ```
 
 
