@@ -143,7 +143,7 @@ Where:
 * motorId - unique motor identifier;
 * groupId - unique group identifier.
 
-You can call this method both at the beginning of initialization of objects in the body of the **setup** function and during the operation of your motor control algorithm in the **loop** function or interrupts functions.
+You can call this method both at the beginning of initialization of the objects in the body of the **setup** function or during within some moving operations with your motors algorithm control in the **loop** function or interrupts functions in your projects as you wish.
 
 ...
 
