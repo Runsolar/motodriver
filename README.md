@@ -26,6 +26,8 @@ You can import Motodriver library going to _PlatformIO: Home -> Libraries_ and s
 ## Supported motor drivers
 
 * L298N 2X Motor Shield;
+* TB6612 Shield driver;
+* MX1508;
 * in progress.
 
 ## Import
