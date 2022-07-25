@@ -83,7 +83,7 @@ motodriver_M = MotoDriver(motorList_N);
 Where:
 * N - amount of motors abstractions which you would to be created.
 * M - amount of the **MotoDriver** instances for the **Motor** objects controlling.
-* EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
+* EN - PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 * IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
 * ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
