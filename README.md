@@ -100,7 +100,7 @@ motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
 motodriver = MotoDriver(motorList);
 ```
 
-In general view you'll should get the below code.
+In general view you'll get the below code.
 ```
 #include "motodriver.h"
 
