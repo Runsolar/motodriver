@@ -70,18 +70,20 @@ motor2 = Motor(EN, IN1 , IN2, ShieldDriversName);
 ...
 motorN = Motor(EN, IN1 , IN2, ShieldDriversName);
 
-motorList1 = { {1, motor}, {2, motor},..., {N, motorN}};
-motorList2 = { {1, motor}, {2, motor},..., {N, motorN}};
+motorList1 = { {1, motor}, {2, motor},..., {P, motorN}};
+motorList2 = { {P+1, motor}, {P+2, motor},..., {K, motorN}};
 ....
-motorListN = { {1, motor}, {2, motor},..., {N, motorN}};
+motorListM = { {K+1, motor}, {K+2, motor},..., {N, motorN}};
 
 motodriver1 = MotoDriver(motorList1);
 motodriver2 = MotoDriver(motorList2);
 ...
-motodriverN = MotoDriver(motorListN);
+motodriverM = MotoDriver(motorListN);
 ```
 
 Where:
+* P < K < N - amount of motors  you would to created.
+* M - amount of the **MotoDriver** instances for controls the **Motor** instances.
 * EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 * IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
