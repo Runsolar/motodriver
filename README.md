@@ -39,7 +39,7 @@ Include the Motodriver library in your sketch code.
 
 ## Setting up
 In order to control your physical motors, firstly you must create abstractions of its. These abstractions correspond to the class which named **Motor**.
-Therefore in the first place you should to declarate the **Motor** class objects. It is preferable to do this outside of the **setup** and **loop** functions in *.ino sketch.
+Therefore in the first place you must to declarate the **Motor** class objects. It is preferable to do this outside of the **setup** and **loop** functions in *.ino sketch.
 ```
 For example.
 Motor motor1;
@@ -48,8 +48,8 @@ Motor motor2;
 Motor motorN;
 ```
 
-The class which responsible for the all control logic of the objects of the **Motor** class is called **MotoDriver**
-Therefore, at the second step you should to declarate the **MotoDriver** class object and to create a class template collection of the motors.
+The class which responsible for the all control logic of the **Motor** class objects is called **MotoDriver**.
+Therefore, at the second step you must to declarate the **MotoDriver** class object and to create a class template collection of the motors.
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
@@ -57,7 +57,7 @@ MotoDriver motodriver;
 std::map<uint8_t, Motor> motorList;
 ```
 
-In the next step, in the setup function you should to initialize your created objects before.
+In the next step, in the **setup** function you must to initialize your created objects before.
 
 ```
 motor1 = Motor(EN, IN1 , IN2, ShieldDriversName);
