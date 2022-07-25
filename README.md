@@ -143,6 +143,10 @@ Where:
 * motorId - unique motor identifier;
 * groupId - unique group identifier.
 
+You can call this method both at the beginning of initialization of objects in the body of the setup function and during the operation of your motor control algorithm.
+
+...
+
 ## Lazy MotoDriver methods (deprecated)
 
 | Method        | Params                                                                | Description                                                                                 |
