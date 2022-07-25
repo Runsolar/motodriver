@@ -129,7 +129,7 @@ void loop() {
 
 ```
 ## Motors rotation
-....
+The **MotoDriver** class can drive each motor individually or drive them as a group. After creation and initialization of all objects, the motors are in the zero group.
 
 
 ## Lazy MotoDriver methods
