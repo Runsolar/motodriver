@@ -38,7 +38,7 @@ Include the Motodriver library in your sketch code.
 ```
 
 ## Setting up
-In order to control your physical motors, firstly you must create abstractions of its. These abstractions correspond to the class which named **Motor**.
+In order to control your physical motors, firstly you must create abstractions of its. These abstractions are implemented through a class called **Motor**.
 Therefore in the first place you must to declarate the **Motor** class objects. It is preferable to do this outside of the **setup** and **loop** functions in *.ino sketch.
 ```
 Motor motor_1;
