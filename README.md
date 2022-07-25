@@ -136,10 +136,10 @@ The **MotoDriver** class can drive each motor individually or drive them as a gr
 Any of the motors can be transferred to another group. To do this, you need to call the method **MotorToGroup**. Метод вызывается следующим образом.
 ```
 MotorToGroup(motorId, groupId);
+```
 Where:
 *motorId - unique motor identifier;
 *groupId - unique group identifier.
-```
 
 ## Lazy MotoDriver methods (deprecated)
 
