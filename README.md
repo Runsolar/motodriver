@@ -38,7 +38,7 @@ You can import the library in your sketch code writing the include statement:
 ```
 
 ## Setting up
-In the first place you should to decorate a **Motor** class object(s).
+In the first place you should to declarate a **Motor** class object(s).
 It is preferable to do this outside of the setup and loop functions.
 ```
 For ex.
@@ -47,17 +47,28 @@ Motor motor2;
 ...
 Motor motorN;
 ```
-In the second thing you should to decorate a **Motor Driver** class object(s) and to create a collections of the motors.
+In the second place you should to declarate a **Motor Driver** class object(s) and to create a class template collections of the motors.
 Also declare it out of the setup and loop functions.
 ```
+For ex.
 MotoDriver motodriver;
 std::map<uint8_t, Motor> motorList;
 
-First thing you need to do is to create a **Motor** class instances to all your motors:
+```
+And the next step. In the setup function you should to initialize your created objects.
+For ex.
+motorList = { {1, motor}, };
+or it might be
+motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
+MotoDriver motodriver = MotoDriver(motorList);
+```
+
+
 ```
 Case 1 (for shield drivers like a L298N)
 Motor motor = Motor(EN, IN1 , IN2, ShieldDriversName);
 ```
+
 ```
 Case 2 (for shield drivers like a TB6612)
 Motor motor = Motor(EN, IN1 , 0, ShieldDriversName);
@@ -72,12 +83,7 @@ For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 * IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
 * ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
 ```
-And the next step. In the setup function you should to initialize your created objects.
-For ex.
-motorList = { {1, motor}, };
-or it might be
-motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
-MotoDriver motodriver = MotoDriver(motorList);
+...
 ```
 Where:
 * motorList - List of all Motor instances with their own IDs connected to current MotoDriver.
