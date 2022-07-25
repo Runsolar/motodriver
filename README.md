@@ -133,7 +133,7 @@ void loop() {
 ```
 ## Motors rotation
 The **MotoDriver** class can drive each motor individually or drive them as a group. After initialization the all motors are in the zero group.
-Any of the motors can be transferred to another group. To do this, you need to call the method **MotorToGroup**. Метод вызывается следующим образом.
+Any of the motors can be transferred to another group. To do this, you need to call the method **MotorToGroup**. The method is called as follows.
 
 ```
 MotorToGroup(motorId, groupId);
