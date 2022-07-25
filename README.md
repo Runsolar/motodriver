@@ -38,7 +38,7 @@ Include the library in your sketch code:
 ```
 
 ## Setting up
-In order to control your physical motors, you must create abstractions of them. This abstraction corresponds to the class **Motor**.
+In order to control your physical motor(s), firstly you must create abstraction(s) of it(s). This abstraction corresponds to the class **Motor**.
 Therefore in the first place you should to declarate a **Motor** class object(s). It is preferable to do this outside of the setup and loop functions.
 ```
 For example.
@@ -48,8 +48,8 @@ Motor motor2;
 Motor motorN;
 ```
 
-The **Motodriver** class is responsible for the entire logic of managing objects of the **Motor** class.
-Therefore, at the second step you should to declarate a **Motor Driver** class object(s) and to create a class template collections of the motors.
+The **Motodriver** class is responsible for the entire logic of managing object(s) of the **Motor** class.
+Therefore, at the second step you should to declarate a **Motor Driver** class object(s) and to create a class template collection(s) of the motor(s).
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
