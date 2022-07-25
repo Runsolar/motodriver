@@ -87,7 +87,7 @@ Where:
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 * IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
 * ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
-* motorList - List of all **Motor** instances with their own IDs connected to current **MotoDriver**.
+* motorList - List of all **Motor** instances with their own IDs connected to current **MotoDriver**. Each of the motors must be assigned as an unique numerical identifier.
 
 ```
 Case 1 (for shield drivers like a L298N)
@@ -133,7 +133,13 @@ void loop() {
 ```
 ## Motors rotation
 The **MotoDriver** class can drive each motor individually or drive them as a group. After initialization the all motors are in the zero group.
-
+Any of the motors can be transferred to another group. To do this, you need to call the method **MotorToGroup**. Метод вызывается следующим образом.
+```
+MotorToGroup(motorId, groupId);
+Where:
+*motorId - unique motor identifier;
+*groupId - unique group identifier.
+```
 
 ## Lazy MotoDriver methods (deprecated)
 
