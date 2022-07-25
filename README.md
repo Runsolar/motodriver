@@ -77,7 +77,7 @@ motorList_M = { {K+1, motor}, {K+2, motor},..., {N, motor_N}};
 motodriver_1 = MotoDriver(motorList_1);
 motodriver_2 = MotoDriver(motorList_2);
 ...
-motodriver_M = MotoDriver(motorList_N);
+motodriver_M = MotoDriver(motorList_M);
 ```
 
 Where:
