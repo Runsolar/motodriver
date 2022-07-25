@@ -51,15 +51,15 @@ A class which responsible for the all control logic of the **Motor** class objec
 Therefore, at the second step you must to declarate the **MotoDriver** class object and to create a class template collection of the motors.
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
-MotoDriver motodriver1;
-MotoDriver motodriver2;
+MotoDriver motodriver_1;
+MotoDriver motodriver_2;
 ...
-MotoDriver motodriverN;
+MotoDriver motodriver_M;
 
-std::map<uint8_t, Motor> motorList1;
-std::map<uint8_t, Motor> motorList2;
+std::map<uint8_t, Motor> motorList_1;
+std::map<uint8_t, Motor> motorList_2;
 ...
-std::map<uint8_t, Motor> motorListN;
+std::map<uint8_t, Motor> motorList_M;
 ```
 
 In the next step, in the **setup** function you must to initialize your created objects before.
