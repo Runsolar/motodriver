@@ -105,19 +105,8 @@ Case 3 (for shield drivers like a MX1508)
 Motor motor = Motor(IN1, IN1 , IN2, ShieldDriversName);
 ```
 
+For example in general view, when N=4, M=1.
 
-```
-For example.
-motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
-motor2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
-motor3 = Motor(3,4,0, ShieldDriversNames::TB6612);
-motor4 = Motor(5,6,7, ShieldDriversNames::L298N);
-motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
-motodriver = MotoDriver(motorList);
-```
-
-In general view you'll get the code below.
-```
 #include "motodriver.h"
 
 Motor motor1;
