@@ -41,10 +41,10 @@ Include the Motodriver library in your sketch code.
 In order to control your physical motors, firstly you must create abstractions of its. These abstractions correspond to the class which named **Motor**.
 Therefore in the first place you must to declarate the **Motor** class objects. It is preferable to do this outside of the **setup** and **loop** functions in *.ino sketch.
 ```
-Motor motor1;
-Motor motor2;
+Motor motor_1;
+Motor motor_2;
 ...
-Motor motorN;
+Motor motor_N;
 ```
 
 A class which responsible for the all control logic of the **Motor** class objects is called **MotoDriver**.
@@ -82,7 +82,7 @@ motodriver_M = MotoDriver(motorList_N);
 ```
 
 Where:
-* P < K < N - amount of motors which you would to created.
+* N - amount of motors which you would to created.
 * M - amount of the **MotoDriver** instances for controls the **Motor** instances.
 * EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
@@ -110,21 +110,21 @@ For example in general view, when N=4, M=1.
 ```
 #include "motodriver.h"
 
-Motor motor1;
-Motor motor2;
-Motor motor3;
-Motor motor4;
-std::map<uint8_t, Motor> motorList;
-MotoDriver motodriver;
+Motor motor_1;
+Motor motor_2;
+Motor motor_3;
+Motor motor_4;
+std::map<uint8_t, Motor> motorList_1;
+MotoDriver motodriver_1;
 
 void setup() {
-  motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
-  motor2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
-  motor3 = Motor(3,4,0, ShieldDriversNames::TB6612);
-  motor4 = Motor(5,6,7, ShieldDriversNames::L298N);
+  motor_1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
+  motor_2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
+  motor_3 = Motor(3,4,0, ShieldDriversNames::TB6612);
+  motor_4 = Motor(5,6,7, ShieldDriversNames::L298N);
   
-  motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
-  motodriver = MotoDriver(motorList);
+  motorList_1 = { {1, motor_1}, {2, motor_2}, {3, motor_3}, {4, motor_4}};
+  motodriver_1 = MotoDriver(motorList_1);
 }
 
 void loop() {
