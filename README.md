@@ -126,6 +126,8 @@ void loop() {
 }
 
 ```
+## Rotate the motors
+
 
 ## Lazy MotoDriver methods
 
