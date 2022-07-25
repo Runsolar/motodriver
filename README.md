@@ -57,7 +57,7 @@ MotoDriver motodriver;
 std::map<uint8_t, Motor> motorList;
 ```
 
-In the next step, in the setup function you should to initialize your's created objects before.
+In the next step, in the setup function you should to initialize your created objects before.
 
 ```
 motor1 = Motor(EN, IN1 , IN2, ShieldDriversName);
