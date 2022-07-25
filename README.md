@@ -47,15 +47,18 @@ Motor motor2;
 ...
 Motor motorN;
 ```
+
 In the second place you should to declarate a **Motor Driver** class object(s) and to create a class template collections of the motors.
 Also declare it out of the setup and loop functions.
 ```
 For ex.
 MotoDriver motodriver;
 std::map<uint8_t, Motor> motorList;
+```
+
+And the next step. In the setup function you should to initialize your created objects.
 
 ```
-And the next step. In the setup function you should to initialize your created objects.
 For ex.
 motorList = { {1, motor}, };
 or it might be
