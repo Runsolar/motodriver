@@ -60,11 +60,14 @@ In the next step, in the setup function you should to initialize your created ob
 
 ```
 For ex.
-motorList = { {1, motor}, };
-or it might be
-motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
+motor1 = Motor(EN, IN1 , IN2, ShieldDriversName);
+motor2 = Motor(EN, IN1 , IN2, ShieldDriversName);
+...
+motorN = Motor(EN, IN1 , IN2, ShieldDriversName);
 
+motorList = { {1, motor}, {2, motor},..., {N, motorN}};
 motodriver = MotoDriver(motorList);
+
 ```
 
 
