@@ -38,8 +38,8 @@ Include the Motodriver library in your sketch code.
 ```
 
 ## Setting up
-In order to control your physical motor(s), firstly you must create abstraction(s) of it(s). This abstraction corresponds to the class which named **Motor**.
-Therefore in the first place you should to declarate the **Motor** class object(s). It is preferable to do this outside of the setup and loop functions.
+In order to control your physical motor, firstly you must create abstraction of it. This abstraction corresponds to the class which named **Motor**.
+Therefore in the first place you should to declarate the **Motor** class object. It is preferable to do this outside of the setup and loop functions.
 ```
 For example.
 Motor motor1;
@@ -48,8 +48,8 @@ Motor motor2;
 Motor motorN;
 ```
 
-The class which responsible for the all control logic of the object(s) of the **Motor** class is called **MotoDriver**
-Therefore, at the second step you should to declarate the **MotoDriver** class object(s) and to create a class template collection(s) of the motor(s).
+The class which responsible for the all control logic of the object of the **Motor** class is called **MotoDriver**
+Therefore, at the second step you should to declarate the **MotoDriver** class object and to create a class template collection of the motor(s).
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
