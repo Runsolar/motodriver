@@ -55,7 +55,7 @@ MotoDriver motodriver;
 std::map<uint8_t, Motor> motorList;
 ```
 
-In the next step, in the setup function you should to initialize your created objects before.
+In the next step, in the setup function you should to initialize your's created objects before.
 
 ```
 motor1 = Motor(EN, IN1 , IN2, ShieldDriversName);
@@ -67,6 +67,12 @@ motorList = { {1, motor}, {2, motor},..., {N, motorN}};
 motodriver = MotoDriver(motorList);
 ```
 
+Where:
+* EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
+For other cases it might be EN=IN1 or EN=IN2 (see case 3).
+* IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
+* ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
+* motorList - List of all Motor instances with their own IDs connected to current MotoDriver.
 
 ```
 Case 1 (for shield drivers like a L298N)
@@ -77,20 +83,12 @@ Motor motor = Motor(EN, IN1 , IN2, ShieldDriversName);
 Case 2 (for shield drivers like a TB6612)
 Motor motor = Motor(EN, IN1 , 0, ShieldDriversName);
 ```
+
 ```
 Case 3 (for shield drivers like a MX1508)
 Motor motor = Motor(IN1, IN1 , IN2, ShieldDriversName);
 ```
-Where:
-* EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
-For other cases it might be EN=IN1 or EN=IN2 (see case 3).
-* IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
-* ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
-```
-...
-```
-Where:
-* motorList - List of all Motor instances with their own IDs connected to current MotoDriver.
+
 
 ```
 For ex.
@@ -102,13 +100,7 @@ motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
 motodriver = MotoDriver(motorList);
 ```
 
-If you want to control all Motors as group, you need to create a **MovingGroup** class instance:
-```
-MovingGroup movingGroup = MovingGroup(motorGroup);
-```
-Where:
-* motorGroup - List of all Motor instances you want to join as group.
-
+In general view you'll should get the below code.
 ```
 #include "motodriver.h"
 
