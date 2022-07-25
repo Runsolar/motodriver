@@ -32,23 +32,25 @@ You can import Motodriver library going to _PlatformIO: Home -> Libraries_ and s
 
 ## Import
 
-You can import the library in your sketch code writing the include statement:
+Include the library in your sketch code:
 ```
 #include <motodriver.h>
 ```
 
 ## Setting up
-In the first place you should to declarate a **Motor** class object(s).
-It is preferable to do this outside of the setup and loop functions.
+In order to control your motors, you must create abstractions of them. This abstraction corresponds to the class **Motor**.
+Therefore in the first place you should to declarate a **Motor** class object(s). It is preferable to do this outside of the setup and loop functions.
 ```
+For example.
 Motor motor1;
 Motor motor2;
 ...
 Motor motorN;
 ```
 
-In the second place you should to declarate a **Motor Driver** class object(s) and to create a class template collections of the motors.
-Also declare it out of the setup and loop functions in your sketch.
+The **Motodriver** class is responsible for the entire logic of managing objects of the **Motor** class.
+Therefore, at the second step you should to declarate a **Motor Driver** class object(s) and to create a class template collections of the motors.
+Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
 MotoDriver motodriver;
