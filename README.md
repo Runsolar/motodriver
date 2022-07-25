@@ -65,24 +65,24 @@ std::map<uint8_t, Motor> motorListN;
 In the next step, in the **setup** function you must to initialize your created objects before.
 
 ```
-motor1 = Motor(EN, IN1 , IN2, ShieldDriversName);
-motor2 = Motor(EN, IN1 , IN2, ShieldDriversName);
+motor_1 = Motor(EN, IN1 , IN2, ShieldDriversName);
+motor_2 = Motor(EN, IN1 , IN2, ShieldDriversName);
 ...
-motorN = Motor(EN, IN1 , IN2, ShieldDriversName);
+motor_N = Motor(EN, IN1 , IN2, ShieldDriversName);
 
-motorList1 = { {1, motor}, {2, motor},..., {P, motorN}};
-motorList2 = { {P+1, motor}, {P+2, motor},..., {K, motorN}};
+motorList_1 = { {1, motor}, {2, motor},..., {P, motor_P}};
+motorList_2 = { {P+1, motor}, {P+2, motor},..., {K, motor_K}};
 ....
-motorListM = { {K+1, motor}, {K+2, motor},..., {N, motorN}};
+motorList_M = { {K+1, motor}, {K+2, motor},..., {N, motor_N}};
 
-motodriver1 = MotoDriver(motorList1);
-motodriver2 = MotoDriver(motorList2);
+motodriver_1 = MotoDriver(motorList_1);
+motodriver_2 = MotoDriver(motorList_2);
 ...
-motodriverM = MotoDriver(motorListN);
+motodriver_M = MotoDriver(motorList_N);
 ```
 
 Where:
-* P < K < N - amount of motors  you would to created.
+* P < K < N - amount of motors which you would to created.
 * M - amount of the **MotoDriver** instances for controls the **Motor** instances.
 * EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
