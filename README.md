@@ -41,7 +41,6 @@ You can import the library in your sketch code writing the include statement:
 In the first place you should to declarate a **Motor** class object(s).
 It is preferable to do this outside of the setup and loop functions.
 ```
-For ex.
 Motor motor1;
 Motor motor2;
 ...
@@ -59,7 +58,6 @@ std::map<uint8_t, Motor> motorList;
 In the next step, in the setup function you should to initialize your created objects before.
 
 ```
-For ex.
 motor1 = Motor(EN, IN1 , IN2, ShieldDriversName);
 motor2 = Motor(EN, IN1 , IN2, ShieldDriversName);
 ...
@@ -67,7 +65,6 @@ motorN = Motor(EN, IN1 , IN2, ShieldDriversName);
 
 motorList = { {1, motor}, {2, motor},..., {N, motorN}};
 motodriver = MotoDriver(motorList);
-
 ```
 
 
@@ -94,6 +91,16 @@ For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 ```
 Where:
 * motorList - List of all Motor instances with their own IDs connected to current MotoDriver.
+
+```
+For ex.
+motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
+motor2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
+motor3 = Motor(3,4,0, ShieldDriversNames::TB6612);
+motor4 = Motor(5,6,7, ShieldDriversNames::L298N);
+motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
+motodriver = MotoDriver(motorList);
+```
 
 If you want to control all Motors as group, you need to create a **MovingGroup** class instance:
 ```
