@@ -136,7 +136,7 @@ void loop() {
 The **MotoDriver** class can drive each motor individually or drive them as a group. After initialization the all motors are in the zero group.
 
 
-## Lazy MotoDriver methods
+## Lazy MotoDriver methods (deprecated)
 
 | Method        | Params                                                                | Description                                                                                 |
 | ------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
