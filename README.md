@@ -102,6 +102,36 @@ MovingGroup movingGroup = MovingGroup(motorGroup);
 Where:
 * motorGroup - List of all Motor instances you want to join as group.
 
+```
+#include "motodriver.h"
+
+Motor motor1;
+Motor motor2;
+Motor motor3;
+Motor motor4;
+std::map<uint8_t, Motor> motorList;
+MotoDriver motodriver;
+
+void setup() {
+  motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
+  motor2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
+  motor3 = Motor(3,4,0, ShieldDriversNames::TB6612);
+  motor4 = Motor(5,6,7, ShieldDriversNames::L298N);
+  
+  motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
+  motodriver = MotoDriver(motorList);
+}
+
+void loop() {
+  motodriver.Clockwise_Rotation(255, 1);
+  motodriver.Clockwise_Rotation(255, 2);
+  motodriver.Clockwise_Rotation(255, 3);
+  motodriver.Clockwise_Rotation(255, 4);
+}
+
+```
+
+
 ## Lazy MotoDriver methods
 
 | Method        | Params                                                                | Description                                                                                 |
