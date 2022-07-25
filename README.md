@@ -38,8 +38,8 @@ Include the Motodriver library in your sketch code.
 ```
 
 ## Setting up
-In order to control your physical motor, firstly you must create abstraction of it. This abstraction corresponds to the class which named **Motor**.
-Therefore in the first place you should to declarate the **Motor** class object. It is preferable to do this outside of the setup and loop functions.
+In order to control your physical motors, firstly you must create abstractions of its. These abstractions correspond to the class which named **Motor**.
+Therefore in the first place you should to declarate the **Motor** class objects. It is preferable to do this outside of the setup and loop functions.
 ```
 For example.
 Motor motor1;
@@ -48,8 +48,8 @@ Motor motor2;
 Motor motorN;
 ```
 
-The class which responsible for the all control logic of the object of the **Motor** class is called **MotoDriver**
-Therefore, at the second step you should to declarate the **MotoDriver** class object and to create a class template collection of the motor(s).
+The class which responsible for the all control logic of the objects of the **Motor** class is called **MotoDriver**
+Therefore, at the second step you should to declarate the **MotoDriver** class object and to create a class template collection of the motors.
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
@@ -74,7 +74,7 @@ Where:
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 * IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
 * ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
-* motorList - List of all Motor instances with their own IDs connected to current MotoDriver.
+* motorList - List of all **Motor** instances with their own IDs connected to current **MotoDriver**.
 
 ```
 Case 1 (for shield drivers like a L298N)
