@@ -58,8 +58,11 @@ For other cases it might be EN=IN1 or EN=IN2 (see case 3).
 * IN1 and IN2 - Arduino digital pin numbers connected to Input pins of the motor driver module.
 * ShieldDriversName - Type of the motor driver module current motor connected is. If not stated, it will be Undefined.
 
-Second thing is to create a **MotoDriver** class instances to all your motor driver modules:
+In the second thing you should to create a **MotoDriver** class instances to all your motor driver modules:
 ```
+For ex.
+//motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
+motorList = { {1, motor}, };
 MotoDriver motodriver = MotoDriver(motorList);
 ```
 Where:
