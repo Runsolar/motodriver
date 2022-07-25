@@ -122,10 +122,7 @@ void setup() {
 }
 
 void loop() {
-  motodriver.Clockwise_Rotation(255, 1);
-  motodriver.Clockwise_Rotation(255, 2);
-  motodriver.Clockwise_Rotation(255, 3);
-  motodriver.Clockwise_Rotation(255, 4);
+
 }
 
 ```
