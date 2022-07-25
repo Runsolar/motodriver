@@ -48,7 +48,7 @@ Motor motorN;
 ```
 
 In the second place you should to declarate a **Motor Driver** class object(s) and to create a class template collections of the motors.
-Also declare it out of the setup and loop functions.
+Also declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
 MotoDriver motodriver;
