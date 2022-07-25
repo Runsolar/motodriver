@@ -41,7 +41,6 @@ Include the Motodriver library in your sketch code.
 In order to control your physical motors, firstly you must create abstractions of its. These abstractions correspond to the class which named **Motor**.
 Therefore in the first place you must to declarate the **Motor** class objects. It is preferable to do this outside of the **setup** and **loop** functions in *.ino sketch.
 ```
-For example.
 Motor motor1;
 Motor motor2;
 ...
@@ -52,9 +51,15 @@ A class which responsible for the all control logic of the **Motor** class objec
 Therefore, at the second step you must to declarate the **MotoDriver** class object and to create a class template collection of the motors.
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
-For ex.
-MotoDriver motodriver;
-std::map<uint8_t, Motor> motorList;
+MotoDriver motodriver1;
+MotoDriver motodriver2;
+...
+MotoDriver motodriverN;
+
+std::map<uint8_t, Motor> motorList1;
+std::map<uint8_t, Motor> motorList2;
+...
+std::map<uint8_t, Motor> motorListN;
 ```
 
 In the next step, in the **setup** function you must to initialize your created objects before.
@@ -65,8 +70,15 @@ motor2 = Motor(EN, IN1 , IN2, ShieldDriversName);
 ...
 motorN = Motor(EN, IN1 , IN2, ShieldDriversName);
 
-motorList = { {1, motor}, {2, motor},..., {N, motorN}};
-motodriver = MotoDriver(motorList);
+motorList1 = { {1, motor}, {2, motor},..., {N, motorN}};
+motorList2 = { {1, motor}, {2, motor},..., {N, motorN}};
+....
+motorListN = { {1, motor}, {2, motor},..., {N, motorN}};
+
+motodriver1 = MotoDriver(motorList1);
+motodriver2 = MotoDriver(motorList2);
+...
+motodriverN = MotoDriver(motorListN);
 ```
 
 Where:
@@ -93,7 +105,7 @@ Motor motor = Motor(IN1, IN1 , IN2, ShieldDriversName);
 
 
 ```
-For ex.
+For example.
 motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
 motor2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
 motor3 = Motor(3,4,0, ShieldDriversNames::TB6612);
