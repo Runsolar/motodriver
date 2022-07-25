@@ -23,9 +23,11 @@ You can import Motodriver library going to _Sketch -> Include Library -> Manage 
 **Platform IO:**   
 You can import Motodriver library going to _PlatformIO: Home -> Libraries_ and search for it.
 
-## Supported motor drivers
+## Supported shield drivers
 
 * L298N 2X Motor Shield;
+* TB6612 Shield driver;
+* MX1508;
 * in progress.
 
 ## Import
@@ -39,7 +41,16 @@ You can import the library in your sketch code writing the include statement:
 
 First thing you need to do is to create a **Motor** class instances to all your motors:
 ```
+Case 1 (for shield drivers like a L298N)
 Motor motor = Motor(EN, IN1 , IN2, ShieldDriversName);
+```
+```
+Case 2 (for shield drivers like a TB6612)
+Motor motor = Motor(EN, IN1 , 0, ShieldDriversName);
+```
+```
+Case 3 (for shield drivers like a MX1508)
+Motor motor = Motor(IN1, IN1 , IN2, ShieldDriversName);
 ```
 Where:
 * EN - Arduino PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
