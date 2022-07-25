@@ -48,8 +48,8 @@ Motor motor2;
 Motor motorN;
 ```
 
-The class responsible for all the control logic of the object(s) of the **Motor** class is called **MotorDriver**
-Therefore, at the second step you should to declarate the **MotorDriver** class object(s) and to create a class template collection(s) of the motor(s).
+The class which responsible for the all control logic of the object(s) of the **Motor** class is called **MotoDriver**
+Therefore, at the second step you should to declarate the **MotoDriver** class object(s) and to create a class template collection(s) of the motor(s).
 Also we recommend to declare it out of the setup and loop functions in your sketch.
 ```
 For ex.
