@@ -40,8 +40,8 @@ You can import the library in your sketch code writing the include statement:
 ## Setting up
 In the first place you should to decorate a **Motor** class object(s).
 It is preferable to do this outside of the setup and loop functions.
-For ex.:
 ```
+For ex.
 Motor motor1;
 Motor motor2;
 ...
