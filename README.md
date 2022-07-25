@@ -107,6 +107,7 @@ Motor motor = Motor(IN1, IN1 , IN2, ShieldDriversName);
 
 For example in general view, when N=4, M=1.
 
+```
 #include "motodriver.h"
 
 Motor motor1;
