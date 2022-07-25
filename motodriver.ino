@@ -8,28 +8,41 @@
 
 // After setup function create Motor class instances 
 // for your DC motors with chosen Arduino pin numbers.
-Motor motor1 = Motor(10,11,12,ShieldDriversNames::L298N);
-Motor motor2 = Motor(3,4,0, ShieldDriversNames::TB6612);
-
-// Create map container with Motor instances and their IDs
-// and create MotoDriver class instance as below.
-std::map<int8_t, Motor> motorList = { {1, motor1}, {2, motor2} };
-MotoDriver motodriver = MotoDriver(motorList);
+MotoDriver motodriver;
+Motor motor1;
+Motor motor2;
+Motor motor3;
+Motor motor4;
+std::map<uint8_t, Motor> motorList;
 
 void setup() {
+  motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
+  motor2 = Motor(10, 8, 0, ShieldDriversNames::TB6612);
+  motor3 = Motor(3,4,0, ShieldDriversNames::TB6612);
+  motor4 = Motor(5,6,7, ShieldDriversNames::L298N);
+  
+  motorList = { {1, motor1}, {2, motor2}, {3, motor3}, {4, motor4}};
+  motodriver = MotoDriver(motorList);
+  
+  motodriver.MotorToGroup(1, 1);
   motodriver.MotorToGroup(2, 1);
+  motodriver.MotorToGroup(3, 2);
+  motodriver.MotorToGroup(4, 2);
+  
+  //Serial.begin(9600);
 }
 
 
 void loop() {
-  
+
+  //motodriver.Clockwise_Rotation(255, 1);
   //motodriver.Clockwise_Rotation(255, 2);
-  //motodriver.Counterclockwise_Rotation(255, 1);
-
-  motodriver.Clockwise_Group_Rotation(255, 0);
-  motodriver.Counterclockwise_Group_Rotation(255, 1);
-
-  delay(3000);
-
+  //motodriver.Clockwise_Rotation(255, 3);
+  //motodriver.Clockwise_Rotation(255, 4);
   
+  //motodriver.Counterclockwise_Rotation(255, 1);
+  
+  motodriver.Clockwise_Group_Rotation(255, 1);
+  motodriver.Counterclockwise_Group_Rotation(255, 2);
+
 }

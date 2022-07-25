@@ -12,7 +12,7 @@
 * Other.
 */
 typedef enum {
-    
+    MX1508 = 3,
     L298N = 2, 
     TB6612 = 1,
     OTHER = 0
