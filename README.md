@@ -145,7 +145,20 @@ Where:
 
 You can call this method both at the beginning of initialization of the objects in the body of the **setup** function or during within some moving operations with your motors algorithm control in the **loop** function or interrupts functions in your projects as you wish.
 
-...
+```
+For ex.
+void setup() {
+  ...
+  motodriver.MotorToGroup(1, 1);
+  motodriver.MotorToGroup(2, 1);
+  motodriver.MotorToGroup(3, 2);
+  motodriver.MotorToGroup(4, 2);
+}
+void loop() {  
+  motodriver.Clockwise_Group_Rotation(255, 1);
+  motodriver.Counterclockwise_Group_Rotation(255, 2);
+}
+```
 
 ## Lazy MotoDriver methods (deprecated)
 
