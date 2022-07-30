@@ -141,7 +141,7 @@ Both methods are called with two identical parameters. The first parameter is th
 ```
 For ex.
 motodriver.Clockwise_Rotation(255, 1);
-motodriver.Counterclockwise_Rotation(255, 1);
+motodriver.Counterclockwise_Rotation(255, 2);
 ```
 
 
@@ -169,7 +169,7 @@ void setup() {
 }
 void loop() {  
   motodriver.Clockwise_Group_Rotation(255, 1);
-  motodriver.Counterclockwise_Group_Rotation(255, 2);
+  motodriver.Counterclockwise_Group_Rotation(128, 2);
 }
 ```
 
