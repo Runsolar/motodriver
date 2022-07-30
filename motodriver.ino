@@ -6,12 +6,13 @@
 
 // After setup function create Motor class instances 
 // for your DC motors with chosen Arduino pin numbers.
-MotoDriver motodriver;
+
 Motor motor1;
 Motor motor2;
 Motor motor3;
 Motor motor4;
 std::map<uint8_t, Motor> motorList;
+MotoDriver motodriver;
 
 void setup() {
   motor1 = Motor(9,9,11,ShieldDriversNames::MX1508); // Two PWM PINS MOTORS, LIKE A MX1508
