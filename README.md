@@ -146,7 +146,7 @@ motodriver.Counterclockwise_Rotation(127, 2);
 
 
 After initialization the all motors are in the zero group.
-Any of the motors can be transferred to another group. To do this, you need to call the method of **MotoDriver** class - **MotorToGroup**. The method is called as follows.
+Any of the motors can be transferred to another group. To do this, you need to call the **MotorToGroup** method of the **MotoDriver** class. The method is called as follows.
 
 ```
 MotorToGroup(motorId, groupId);
