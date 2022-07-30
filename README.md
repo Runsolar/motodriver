@@ -165,10 +165,8 @@ void loop() {
 | Method        | Params                                                                | Description                                                                                 |
 | ------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | Forward       | signed char **Duty cycle**, signed char **MotorID**                   | Move chosen motor forward with set duty cycle. If not stated, it will be 255.               |
-| ForwardUntil  | signed char **Duty cycle**, signed char **MotorID**, short **Delay**  | Move chosen motor forward with set duty cycle and set delay. After delay end shutdown.      |
 | Backward      | signed char **Duty cycle**, signed char **MotorID**                   | Move chosen motor backward with set duty cycle. If not stated, it will be 255.              |
-| BackwardUntil | signed char **Duty cycle**, signed char **MotorID**, short **Delay**  | Move chosen motor backward with set duty cycle and set delay. After delay end shutdown.     |
-| Shutdown      | signed char **MotorID**                                               | Shutdown chosen motor.                                                                      |
+| Halt      | signed char **MotorID**                                               | Shutdown chosen motor.                                                                      |
 
                         |
 
