@@ -83,7 +83,7 @@ motodriver_M = MotoDriver(motorList_M);
 ```
 
 Where:
-* N - amount of motors abstractions which you would to be created.
+* N - amount of motors abstractions which you would to be created, also it is the unique identifier of the motor - **MotorId**.
 * M - amount of the **MotoDriver** instances for the **Motor** objects controlling.
 * EN - PWM pin number connected to Enable pin of the motor driver module. If you using jumper instead of PWM pin, EN equal -1.
 For other cases it might be EN=IN1 or EN=IN2 (see case 3).
@@ -134,7 +134,18 @@ void loop() {
 
 ```
 ## Motors rotation
-The **MotoDriver** class can drive each motor individually or drive them as a group. After initialization the all motors are in the zero group.
+The **MotoDriver** class can drive each motor individually or drive them as a group. 
+If you want drive each motor separately then you should call on of the two methods of the MotoDrive class: **Clockwise_Rotation** or **Counterclockwise_Rotation**.
+Both methods are called with two identical parameters. The first parameter is the PWM duty cycle. The second parameter is the unique identifier of the motor. The one you specify when you creating the motors collection object.
+
+```
+For ex.
+motodriver.Clockwise_Rotation(255, 1);
+motodriver.Counterclockwise_Rotation(255, 1);
+```
+
+
+After initialization the all motors are in the zero group.
 Any of the motors can be transferred to another group. To do this, you need to call the method of **MotoDriver** class - **MotorToGroup**. The method is called as follows.
 
 ```
