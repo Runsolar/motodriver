@@ -136,7 +136,7 @@ void loop() {
 ## Motors rotation
 The **MotoDriver** class can drive each motor individually or drive them as a group. 
 If you want drive each motor separately (without regard to group specifics) then you can use the following methods of this class: **Clockwise_Rotation** (sets the rotor to rotate by clockwise direction) or **Counterclockwise_Rotation** (sets the rotor to rotate by counterclockwise direction).
-Both methods are called with two identical parameters. The first parameter is the PWM duty cycle. The second parameter is the unique identifier of the motor. The one you specify when you creating the motors collection object.
+Both methods are called with two identical parameters. The first parameter is the PWM duty cycle. The second parameter is the unique identifier of the motor - that one you specify when you creating the motors collection object.
 
 ```
 For ex.
