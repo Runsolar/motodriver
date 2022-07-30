@@ -2,6 +2,12 @@
 
 <img src="https://github.com/Runsolar/motodriver/blob/main/examples/motodriver.Ex04/motodriver.Ex04.gif" alt="Motodriver-Title" width="500"/>
 
+img.motodriver-gif{
+  width: 120px;
+  height: auto;
+}
+
+
 Universal Arduino library that makes simplier DC engine control via popular motor driver shields.
 
 ## Feedback 
