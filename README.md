@@ -133,7 +133,7 @@ void loop() {
 ```
 ## Motors rotation
 The **MotoDriver** class can drive each motor individually or drive them as a group. After initialization the all motors are in the zero group.
-Any of the motors can be transferred to another group. To do this, you need to call the method **MotorToGroup**. The method is called as follows.
+Any of the motors can be transferred to another group. To do this, you need to call the method of **MotoDriver** class - **MotorToGroup**. The method is called as follows.
 
 ```
 MotorToGroup(motorId, groupId);
@@ -160,15 +160,13 @@ void loop() {
 }
 ```
 
-## Lazy MotoDriver methods (deprecated)
+## The MotoDriver class methods
 
 | Method        | Params                                                                | Description                                                                                 |
 | ------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Forward       | signed char **Duty cycle**, signed char **MotorID**                   | Move chosen motor forward with set duty cycle. If not stated, it will be 255.               |
-| ForwardUntil  | signed char **Duty cycle**, signed char **MotorID**, short **Delay**  | Move chosen motor forward with set duty cycle and set delay. After delay end shutdown.      |
-| Backward      | signed char **Duty cycle**, signed char **MotorID**                   | Move chosen motor backward with set duty cycle. If not stated, it will be 255.              |
-| BackwardUntil | signed char **Duty cycle**, signed char **MotorID**, short **Delay**  | Move chosen motor backward with set duty cycle and set delay. After delay end shutdown.     |
-| Shutdown      | signed char **MotorID**                                               | Shutdown chosen motor.                                                                      |
+| Clockwise_Rotation       | unsigned char **Duty cycle**, unsigned char **MotorID**                   | Move chosen motor forward with set duty cycle. If not stated, it will be 255.               |
+| Counterclockwise_Rotation      | unsigned char **Duty cycle**, unsigned char **MotorID**                   | Move chosen motor backward with set duty cycle. If not stated, it will be 255.              |
+| Halt      | unsigned char **MotorID**                                               | Shutdown chosen motor.                                                                      |
 
                         |
 
